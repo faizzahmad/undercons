@@ -1,103 +1,150 @@
-import Image from "next/image";
+"use client"
+import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
-export default function Home() {
+// Place this file as a page in Next.js (e.g. app/coming-soon/page.tsx or pages/coming-soon.tsx)
+// Requires Tailwind CSS and framer-motion installed
+
+export default function ComingSoon() {
+  const [email, setEmail] = useState('')
+  const [subscribed, setSubscribed] = useState(false)
+  const [timeLeft, setTimeLeft] = useState<number | null>(null)
+
+  // Set a target date for countdown (example: 30 days from now)
+  useEffect(() => {
+    const target = new Date()
+    target.setDate(target.getDate() + 30)
+
+    const update = () => {
+      const now = new Date().getTime()
+      const distance = target.getTime() - now
+      setTimeLeft(distance > 0 ? distance : 0)
+    }
+
+    update()
+    const id = setInterval(update, 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  const formatTime = (ms: number | null) => {
+    if (ms === null) return '-- : -- : -- : --'
+    const totalSeconds = Math.floor(ms / 1000)
+    const days = Math.floor(totalSeconds / (3600 * 24))
+    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600)
+    const minutes = Math.floor((totalSeconds % 3600) / 60)
+    const seconds = totalSeconds % 60
+    return `${String(days).padStart(2, '0')}d : ${String(hours).padStart(2, '0')}h : ${String(minutes).padStart(2, '0')}m : ${String(seconds).padStart(2, '0')}s`
+  }
+
+  const submit = (e?: React.FormEvent) => {
+    e?.preventDefault()
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      alert('Please enter a valid email address')
+      return
+    }
+    // placeholder: integrate your subscribe API here
+    setSubscribed(true)
+    setEmail('')
+  }
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-screen bg-gradient-to-b from-slate-900 via-indigo-900 to-slate-800 text-slate-100 flex items-center justify-center p-6">
+      <div className="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Left: Brand + message */}
+        <motion.section
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="space-y-6"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center text-2xl font-extrabold tracking-tight">LN</div>
+            <div>
+              <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">Lonnue</h1>
+              <p className="text-sm text-slate-300">lonnue.com — something beautiful is coming soon</p>
+            </div>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <h2 className="text-4xl md:text-5xl font-black leading-tight">We&rsquo;re building something delightful.</h2>
+
+          <p className="text-slate-300 max-w-lg">
+            Lonnue is under construction. 
+          </p>
+
+          {/* <div className="flex flex-wrap gap-3">
+            <a href="#" className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/6 hover:bg-white/10 border border-white/5 text-sm">Follow on Twitter</a>
+            <a href="#" className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/6 hover:bg-white/10 border border-white/5 text-sm">Instagram</a>
+            <a href="#" className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/6 hover:bg-white/10 border border-white/5 text-sm">GitHub</a>
+          </div> */}
+
+          {/* <form onSubmit={submit} className="mt-6 max-w-md w-full">
+            <div className="flex items-center gap-3 bg-white/5 p-1 rounded-2xl border border-white/6">
+              <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address"
+                className="flex-1 bg-transparent outline-none px-4 py-3 text-sm placeholder:text-slate-400"
+                type="email"
+                aria-label="Email address"
+              />
+              <button
+                type="submit"
+                className="bg-gradient-to-r from-indigo-500 to-purple-500 px-4 py-3 rounded-2xl font-semibold text-sm shadow-lg hover:opacity-95"
+              >
+                {subscribed ? 'Subscribed' : 'Notify Me'}
+              </button>
+            </div>
+            <p className="text-xs text-slate-400 mt-2">We respect your privacy. No spam, ever.</p>
+          </form> */}
+        </motion.section>
+
+        {/* Right: Visual card + countdown */}
+        <motion.aside
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="w-full"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+          <div className="rounded-3xl p-8 backdrop-blur-md bg-white/5 border border-white/6 shadow-2xl">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-2xl font-bold">Launching soon</h3>
+                <p className="text-sm text-slate-300 mt-1">Stay tuned — we&rsquo;ll be live shortly.</p>
+              </div>
+              <div className="text-xs text-slate-400">v0.9.3</div>
+            </div>
+
+            {/* <div className="mt-8 grid grid-cols-1 gap-6">
+              <div className="rounded-xl p-6 bg-white/3 border border-white/5">
+                <div className="text-sm text-slate-300">Estimated launch</div>
+                <div className="mt-3 text-2xl font-extrabold">{formatTime(timeLeft)}</div>
+              </div>
+
+              <div className="rounded-xl p-6 bg-white/3 border border-white/5">
+                <div className="text-sm text-slate-300">What to expect</div>
+                <ul className="mt-3 text-slate-100 list-disc list-inside space-y-1 text-sm">
+                  <li>Beautiful product design</li>
+                  <li>Fast & secure experience</li>
+                  <li>Early access for subscribers</li>
+                </ul>
+              </div>
+
+              <div className="mt-2 flex items-center justify-between">
+                <a href="#" className="text-sm underline text-slate-300">Contact us</a>
+                <a href="#" className="text-sm underline text-slate-300">Privacy</a>
+              </div>
+            </div> */}
+          </div>
+
+          <div className="mt-6 flex items-center justify-center text-xs text-slate-400">© {new Date().getFullYear()} Lonnue — Built with care</div>
+        </motion.aside>
+      </div>
+
+      {/* subtle background shapes */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
+        <div className="absolute -top-40 -left-20 w-96 h-96 rounded-full bg-gradient-to-tr from-indigo-700 via-pink-700 to-transparent opacity-20 blur-3xl" />
+        <div className="absolute -bottom-56 -right-40 w-[32rem] h-[32rem] rounded-full bg-gradient-to-br from-sky-700 via-violet-700 to-transparent opacity-15 blur-3xl" />
+      </div>
+    </main>
+  )
 }
