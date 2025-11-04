@@ -13,6 +13,11 @@ const Page = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if(!name || !phoneNo){
+      toast.error("Please fill in all fields.");
+      return;
+    }
     setLoading(true);
 
     try {
