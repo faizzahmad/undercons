@@ -54,7 +54,6 @@ const Page = () => {
         <p className="md:text-lg text-sm text-[#674158] text-center">
           Until then....<br />
           leave your details to stay in the loop.
-  
           </p>
       </div>
 
@@ -68,6 +67,7 @@ const Page = () => {
 
          <input
          className=" bg-white rounded-none text-[#674158] outline-none border-none focus:outline-none p-2 w-full placeholder:text-[#674158]"
+         type="number"
          placeholder="Phone Number:"
           value={phoneNo}
           onChange={(e) => setPhoneNo(e.target.value)}
