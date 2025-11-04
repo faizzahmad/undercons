@@ -14,10 +14,15 @@ const Page = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if(!name || !phoneNo){
-      toast.error("Please fill in all fields.");
-      return;
-    }
+  if (!name || !phoneNo) {
+  toast.error("Please fill in all fields.");
+  return;
+}
+const phoneRegex = /^[0-9]+$/;
+if (!phoneRegex.test(phoneNo)) {
+  toast.error("Phone number must contain only numbers.");
+  return;
+}
     setLoading(true);
 
     try {
@@ -72,7 +77,6 @@ const Page = () => {
 
          <input
          className=" bg-white rounded-none text-[#674158] outline-none border-none focus:outline-none p-2 w-full placeholder:text-[#674158]"
-         type="number"
          placeholder="Phone Number:"
           value={phoneNo}
           onChange={(e) => setPhoneNo(e.target.value)}
