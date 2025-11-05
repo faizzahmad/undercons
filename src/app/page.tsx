@@ -89,7 +89,7 @@ if (!phoneRegex.test(phoneNo)) {
           onChange={(e) => setPhoneNo(e.target.value)}
         />
 
-        <button className="py-3 bg-[#674158] flex gap-1 justify-center items-center text-lg text-[#EFEDE3] font-semibold w-[150px] rounded-full disabled:opacity-50 "
+        <button className="py-3 bg-[#66435a] md:bg-[#734962] flex gap-1 justify-center items-center text-lg text-[#EFEDE3] font-semibold w-[150px] rounded-full disabled:opacity-50 "
         disabled={loading}
         >
           {
