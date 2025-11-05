@@ -51,8 +51,8 @@ if (!phoneRegex.test(phoneNo)) {
     }
   }
   return (
-    <div className={`w-full h-screen flex items-center justify-center md:p-0 p-5 bg-[#734962] flex-col overflow-y-auto ${goldenBook.className}`}>
-     <div className="w-full hidden md:block">
+    <div className={`w-full  flex items-center justify-center md:pt-4 md:pb-4 pb-4 pt-0 px-4   bg-[#734962] flex-col overflow-y-auto ${goldenBook.className}`}>
+     <div className="w-full hidden md:block h-full">
       <CustomVideo
       src="/images/lonnue.mp4"
       />
@@ -64,7 +64,7 @@ if (!phoneRegex.test(phoneNo)) {
       />
      </div>
 
-     <div className="min-w-[250px] max-w-[600px]  bg-[#EFEDE3] py-5 md:px-10 px-5 rounded-4xl mt-5 flex justify-center flex-col items-center gap-4">
+     <div className="min-w-[250px] max-w-[600px]  bg-[#EFEDE3] py-5 md:px-10 px-5 rounded-4xl md:mt-5 flex justify-center flex-col items-center gap-4">
       <div className="md:w-[70%]">
           <h5 className={`text-[#674158] md:text-2xl text-lg text-center uppercase`}>WE&apos;RE crafting a new standard for body care, Piece by piece </h5>
         <p className="md:text-lg text-sm text-[#674158] text-center">
