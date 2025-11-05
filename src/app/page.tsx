@@ -52,7 +52,7 @@ if (!phoneRegex.test(phoneNo)) {
   }
   return (
     <div className={`w-full relative  flex md:items-center md:justify-center md:pt-4 md:pb-4 pb-4 pt-0 px-4 md:h-auto h-[110vh]  bg-[#734962] flex-col overflow-y-auto ${goldenBook.className}`}>
-     <div className="w-full hidden md:block h-full">
+     <div className="w-[80%] hidden md:block h-full">
       <CustomVideo
       src="/images/lonnue.mp4"
       />
