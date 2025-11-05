@@ -51,10 +51,16 @@ if (!phoneRegex.test(phoneNo)) {
     }
   }
   return (
-    <div className={`w-full h-screen flex items-center justify-center p-5 bg-[#674158] flex-col overflow-y-auto ${goldenBook.className}`}>
-     <div className="max-w-[350px]">
+    <div className={`w-full h-screen flex items-center justify-center md:p-0 p-5 bg-[#734962] flex-col overflow-y-auto ${goldenBook.className}`}>
+     <div className="w-full hidden md:block">
       <CustomVideo
       src="/images/lonnue.mp4"
+      />
+     </div>
+
+      <div className="w-full  md:hidden">
+      <CustomVideo
+      src="/images/lonnueMob.mp4"
       />
      </div>
 
