@@ -19,6 +19,7 @@ const isMuted = true; // Video is always muted
 //   };
 
   return (
+    
     <div className="relative w-full">
       <video
         ref={videoRef}
@@ -27,7 +28,7 @@ const isMuted = true; // Video is always muted
         loop
         muted={isMuted}
         playsInline
-        className="w-full h-auto"
+        className="w-full h-auto opacity-50"
         controls={false}
       />
       {/* <button
