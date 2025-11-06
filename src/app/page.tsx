@@ -51,16 +51,16 @@ if (!phoneRegex.test(phoneNo)) {
     }
   }
   return (
-    <div className={`w-full relative  flex md:items-center md:justify-center md:pt-4 md:pb-4 pb-4 pt-0 px-4 md:h-auto h-[110vh]  bg-[#66435a] md:bg-[#734962] flex-col overflow-y-auto ${goldenBook.className}`}>
+    <div className={`w-full relative  flex md:items-center md:justify-center md:pt-4 md:pb-4 pb-4 pt-0 px-4 md:h-auto h-[110vh]  bg-[#6e4260] md:bg-[#6e4260] flex-col overflow-y-auto ${goldenBook.className}`}>
      <div className="w-[80%] hidden md:block h-full">
       <CustomVideo
-      src="/images/lonnue.mp4"
+      src="/images/4.mp4"
       />
      </div>
 
       <div className="w-full  md:hidden">
       <CustomVideo
-      src="/images/lonnueMob.mp4"
+      src="/images/3.mp4"
       />
      </div>
 
