@@ -61,7 +61,7 @@ if (!phoneRegex.test(phoneNo)) {
       /> */}
      </div>
 
-   <div className="p-4 md:p-0 md:static absolute left-0 right-0 bottom-[50px] w-full flex justify-center">
+   <div className="p-4 md:p-0 md:static absolute left-0 right-0 bottom-[70px] w-full flex justify-center">
       <div className="min-w-[250px]  max-w-[600px]  bg-[#EFEDE3] py-5 md:px-10 px-5 rounded-4xl md:mt-5 flex justify-center flex-col items-center gap-4">
       <div className="md:w-[70%]">
           <h5 className={`text-[#674158] md:text-2xl text-lg text-center uppercase`}>WE&apos;RE crafting a new standard for body care, Piece by piece </h5>
