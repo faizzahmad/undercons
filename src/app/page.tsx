@@ -54,7 +54,7 @@ if (!phoneRegex.test(phoneNo)) {
   <>
     <div className={`w-full relative  flex md:hidden md:items-center md:justify-center md:pt-4 md:pb-4 pb-4 pt-0 md:h-auto h-[110vh]  bg-[#613753] md:bg-[#613753] flex-col overflow-y-auto ${goldenBook.className}`}>
     
-      <div className="w-full  md:hidden absolute top-[-130px] left-0">
+      <div className="w-full  md:hidden absolute top-[-100px] left-0">
          <img src="/images/3.gif" alt="" className="w-full h-autp" />
       {/* <CustomVideo
       src="/images/3.mp4"
